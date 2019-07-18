@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+import useInputState from "./hooks/useInputState";
+
+const App = () => {
+  // one UseInputState for each input of the form
+  const [email, handleEmailChange, resetEmail] = useInputState("");
+  const [password, handlePasswordChange, resetPassword] = useInputState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Email: {email}</h1>
+      <input type="email" value={email} onChange={handleEmailChange} />
+      <button onClick={resetEmail}>reset email</button>
+
+      <h1>Password: {password}</h1>
+      <input type="password" value={password} onChange={handlePasswordChange} />
+      <button onClick={resetPassword}>reset password</button>
     </div>
   );
-}
+};
 
 export default App;
